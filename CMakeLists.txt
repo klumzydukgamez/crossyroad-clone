@@ -23,14 +23,11 @@ set(CR_THIRD_PARTY_DIR "${CMAKE_CURRENT_SOURCE_DIR}/third_party")
 set(CR_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/source")
 set(CR_ASSETS_DIR "${CMAKE_CURRENT_SOURCE_DIR}/assets")
 
-# set(SDL_STATIC ON  CACHE BOOL "" FORCE)
-# set(SDL_SHARED OFF CACHE BOOL "" FORCE)
-# set(CGLM_STATIC ON  CACHE BOOL "" FORCE)
-# set(CGLM_SHARED OFF CACHE BOOL "" FORCE)
+set(SDL_STATIC ON  CACHE BOOL "" FORCE)
+set(SDL_SHARED OFF CACHE BOOL "" FORCE)
 
-# add_subdirectory("${MC_THIRD_PARTY_DIR}/SDL" EXCLUDE_FROM_ALL SYSTEM)
-# add_subdirectory("${MC_THIRD_PARTY_DIR}/glad" EXCLUDE_FROM_ALL SYSTEM)
-# add_subdirectory("${MC_THIRD_PARTY_DIR}/cglm" EXCLUDE_FROM_ALL SYSTEM)
+add_subdirectory("${CR_THIRD_PARTY_DIR}/SDL" EXCLUDE_FROM_ALL SYSTEM)
+# add_subdirectory("${CR_THIRD_PARTY_DIR}/glad" EXCLUDE_FROM_ALL SYSTEM)
 
 add_executable(cr)
 set_target_properties(
@@ -51,9 +48,8 @@ target_include_directories(
 )
 target_link_libraries(
 	cr PRIVATE
-	# SDL3::SDL3
+	SDL3::SDL3
 	# glad
-	# cglm
 )
 target_compile_options(
 	cr PRIVATE
