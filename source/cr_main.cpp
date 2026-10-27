@@ -3,6 +3,7 @@
 
 #include "cr_window.h"
 #include "cr_keyboard.h"
+#include "cr_mouse.h"
 
 void quit_callback(const SDL_Event& event, void* data) {
 	if (event.type == SDL_EVENT_QUIT) {
@@ -27,13 +28,17 @@ int main(int argc, char* argv[]) {
 	cr::keyboard keyboard;
 	window.push_callback({keyboard.window_callback, &keyboard});
 
+	cr::mouse mouse;
+	window.push_callback({mouse.window_callback, &mouse});
+
 	while (running) {
 		keyboard.update(0);
+		mouse.update(0);
 
 		window.poll_events();
 
-		if (keyboard.was_released(SDL_SCANCODE_SPACE))
-			SDL_Log("SPACE");
+		if (mouse.is_pressed(SDL_BUTTON_LEFT))
+			SDL_Log("LEFT");
 
 		window.swap_buffers();
 	}

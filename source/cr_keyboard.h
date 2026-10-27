@@ -16,8 +16,8 @@ public:
 
 	bool is_down(int key) const;
 	bool is_up(int key) const;
-	bool was_pressed(int key) const;
-	bool was_released(int key) const;
+	bool is_pressed(int key) const;
+	bool is_released(int key) const;
 	bool is_held(int key, uint64_t timeout = 15) const;
 
 private:

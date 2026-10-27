@@ -45,7 +45,7 @@ bool cr::keyboard::is_up(int key) const {
 	return !m_keys[key];
 }
 
-bool cr::keyboard::was_pressed(int key) const {
+bool cr::keyboard::is_pressed(int key) const {
 	if (m_is_invalid_key(key)) {
 		SDL_Log("Invalid key.");
 		return false;
@@ -53,7 +53,7 @@ bool cr::keyboard::was_pressed(int key) const {
 	return m_keys[key] && !m_prevKeys[key];
 }
 
-bool cr::keyboard::was_released(int key) const {
+bool cr::keyboard::is_released(int key) const {
 	if (m_is_invalid_key(key)) {
 		SDL_Log("Invalid key.");
 		return false;
