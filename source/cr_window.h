@@ -32,12 +32,12 @@ public:
 	void pop_callback(int index);
 
 private:
-	static constexpr int m_CALLBACKS_SIZE = 16;
+	static constexpr int m_CALLBACK_COUNT = 16;
 
 	SDL_Window* m_handle = nullptr;
 	SDL_GLContext m_glContext = nullptr;
-	cr::window_callback m_callbacks[m_CALLBACKS_SIZE] = {};
-	bool m_availableCallbacks[m_CALLBACKS_SIZE] = {true};
+	cr::window_callback m_callbacks[m_CALLBACK_COUNT] = {};
+	bool m_availableCallbacks[m_CALLBACK_COUNT] = {};
 };
 
 } /* namespace cr */

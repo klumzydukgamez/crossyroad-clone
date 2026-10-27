@@ -4,6 +4,9 @@
 #include "cr_window.h"
 
 bool cr::window::init() {
+	for (int i = 0; i < m_CALLBACK_COUNT; i++)
+		m_availableCallbacks[i] = true;
+
 	if (!SDL_InitSubSystem(SDL_INIT_VIDEO)) {
 		SDL_Log("Failed to init SDL video sub system.");
 		return false;
@@ -47,7 +50,7 @@ void cr::window::poll_events() {
 }
 
 void cr::window::fire_event(const SDL_Event& event) {
-	for (int i = 0; i < m_CALLBACKS_SIZE; i++) {
+	for (int i = 0; i < m_CALLBACK_COUNT; i++) {
 		cr::window_callback callback = m_callbacks[i];
 		if (callback.function)
 			callback.function(event, callback.data);
@@ -55,7 +58,7 @@ void cr::window::fire_event(const SDL_Event& event) {
 }
 
 int cr::window::push_callback(const cr::window_callback& callback) {
-	for (int i = 0; i < m_CALLBACKS_SIZE; i++) {
+	for (int i = 0; i < m_CALLBACK_COUNT; i++) {
 		if (m_availableCallbacks[i]) {
 			m_callbacks[i] = callback;
 			m_availableCallbacks[i] = false;
@@ -67,7 +70,7 @@ int cr::window::push_callback(const cr::window_callback& callback) {
 }
 
 void cr::window::pop_callback(int index) {
-	for (int i = 0; i < m_CALLBACKS_SIZE; i++) {
+	for (int i = 0; i < m_CALLBACK_COUNT; i++) {
 		if (!m_availableCallbacks[i]) {
 			m_callbacks[i] = {};
 			m_availableCallbacks[i] = true;
