@@ -19,7 +19,7 @@ public:
 	static constexpr int HEIGHT = 640;
 	static constexpr float HALF_WIDTH = WIDTH / 2.0f;
 	static constexpr float HALF_HEIGHT = HEIGHT / 2.0f;
-	static constexpr float RATIO = (float)WIDTH / (float)HEIGHT;
+	static constexpr float RATIO = static_cast<float>(WIDTH) / static_cast<float>(HEIGHT);
 
 	bool init();
 	void cleanup();

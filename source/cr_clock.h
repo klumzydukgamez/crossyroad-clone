@@ -4,7 +4,6 @@
 #if !defined CR_CLOCK_H
 #define CR_CLOCK_H
 
-#include "cr_third_party.h"
 #include "cr_window.h"
 
 namespace cr {

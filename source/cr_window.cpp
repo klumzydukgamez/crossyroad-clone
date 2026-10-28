@@ -12,6 +12,19 @@ bool cr::window::init() {
 		return false;
 	}
 
+	if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 4)) {
+		SDL_Log("Failed to set SDL GL attribute.");
+		return false;
+	}
+	if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 6)) {
+		SDL_Log("Failed to set SDL GL attribute.");
+		return false;
+	}
+	if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE)) {
+		SDL_Log("Failed to set SDL GL attribute.");
+		return false;
+	}
+
 	m_handle = SDL_CreateWindow("crossyroad-clone", WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 	if (!m_handle) {
 		SDL_Log("Failed to create SDL window.");

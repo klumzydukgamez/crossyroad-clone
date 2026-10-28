@@ -5,6 +5,7 @@
 #include "cr_clock.h"
 #include "cr_keyboard.h"
 #include "cr_mouse.h"
+#include "cr_shader.h"
 
 void quit_callback(const SDL_Event& event, void* data) {
 	if (event.type == SDL_EVENT_QUIT) {
@@ -20,6 +21,7 @@ int main(int argc, char* argv[]) {
 	cr::clock clock;
 	cr::keyboard keyboard;
 	cr::mouse mouse;
+	cr::shader shader;
 	bool running = true;
 
 	if (!window.init()) {
@@ -27,9 +29,17 @@ int main(int argc, char* argv[]) {
 		return 1;
 	}
 
+	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress))) {
+		window.cleanup();
+		return 1;
+	}
+
 	window.push_callback({keyboard.window_callback, &keyboard});
 	window.push_callback({mouse.window_callback, &mouse});
 	window.push_callback({quit_callback, &running});
+
+	if (!shader.init("", ""))
+		shader.cleanup();
 
 	while (running) {
 		clock.tick(&window);
@@ -41,6 +51,7 @@ int main(int argc, char* argv[]) {
 		window.swap_buffers();
 	}
 
+	shader.cleanup();
 	window.cleanup();
 	return 0;
 }

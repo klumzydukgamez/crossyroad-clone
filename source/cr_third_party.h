@@ -5,5 +5,6 @@
 #define CR_THIRD_PARTY_H
 
 #include <SDL3/SDL.h>
+#include <glad/glad.h>
 
 #endif /* CR_THIRD_PARTY_H */
