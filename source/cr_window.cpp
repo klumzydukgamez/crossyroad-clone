@@ -79,3 +79,8 @@ void cr::window::pop_callback(int index) {
 	}
 	SDL_Log("Failed to pop windo callback.");
 }
+
+void cr::window::set_title(const char* title) {
+	if (!SDL_SetWindowTitle(m_handle, title))
+		SDL_Log("Failed to set SDL window title.");
+}

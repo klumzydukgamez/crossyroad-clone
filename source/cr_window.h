@@ -19,6 +19,7 @@ public:
 	static constexpr int HEIGHT = 640;
 	static constexpr float HALF_WIDTH = WIDTH / 2.0f;
 	static constexpr float HALF_HEIGHT = HEIGHT / 2.0f;
+	static constexpr float RATIO = (float)WIDTH / (float)HEIGHT;
 
 	bool init();
 	void cleanup();
@@ -30,6 +31,8 @@ public:
 
 	int push_callback(const cr::window_callback& callback);
 	void pop_callback(int index);
+
+	void set_title(const char* title);
 
 private:
 	static constexpr int m_CALLBACK_COUNT = 16;

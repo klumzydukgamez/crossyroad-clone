@@ -2,6 +2,7 @@
  * See LICENSE.md for full terms. */
 
 #include "cr_window.h"
+#include "cr_clock.h"
 #include "cr_keyboard.h"
 #include "cr_mouse.h"
 
@@ -16,34 +17,30 @@ void quit_callback(const SDL_Event& event, void* data) {
 
 int main(int argc, char* argv[]) {
 	cr::window window;
+	cr::clock clock;
+	cr::keyboard keyboard;
+	cr::mouse mouse;
+	bool running = true;
 
 	if (!window.init()) {
 		window.cleanup();
 		return 1;
 	}
 
-	bool running = true;
+	window.push_callback({keyboard.window_callback, &keyboard});
+	window.push_callback({mouse.window_callback, &mouse});
 	window.push_callback({quit_callback, &running});
 
-	cr::keyboard keyboard;
-	window.push_callback({keyboard.window_callback, &keyboard});
-
-	cr::mouse mouse;
-	window.push_callback({mouse.window_callback, &mouse});
-
 	while (running) {
-		keyboard.update(0);
-		mouse.update(0);
+		clock.tick(&window);
+		keyboard.update(clock.get_ticks());
+		mouse.update(clock.get_ticks());
 
 		window.poll_events();
-
-		if (mouse.is_pressed(SDL_BUTTON_LEFT))
-			SDL_Log("LEFT");
 
 		window.swap_buffers();
 	}
 
 	window.cleanup();
-
 	return 0;
 }
