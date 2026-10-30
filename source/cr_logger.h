@@ -17,7 +17,7 @@ public:
 
 private:
 	static void m_get_time();
-	static SDL_DateTime m_dateTime;
+	static inline SDL_DateTime m_dateTime = {};
 };
 
 } /* namespace cr */
