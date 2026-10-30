@@ -2,11 +2,12 @@
  * See LICENSE.md for full terms. */
 
 #include "cr_keyboard.h"
+#include "cr_logger.h"
 
 void cr::keyboard::window_callback(const SDL_Event& event, void* data) {
 	auto* keyboard = static_cast<cr::keyboard*>(data);
 	if (!keyboard) {
-		SDL_Log("Null keyboard.");
+		cr::logger::fail("Null keyboard.");
 		return;
 	}
 	switch (event.type) {
@@ -31,7 +32,7 @@ void cr::keyboard::update(uint64_t ticks) {
 
 bool cr::keyboard::is_down(int key) const {
 	if (m_is_invalid_key(key)) {
-		SDL_Log("Invalid key.");
+		cr::logger::warn("Invalid key.");
 		return false;
 	}
 	return m_keys[key];
@@ -39,7 +40,7 @@ bool cr::keyboard::is_down(int key) const {
 
 bool cr::keyboard::is_up(int key) const {
 	if (m_is_invalid_key(key)) {
-		SDL_Log("Invalid key.");
+		cr::logger::warn("Invalid key.");
 		return false;
 	}
 	return !m_keys[key];
@@ -47,7 +48,7 @@ bool cr::keyboard::is_up(int key) const {
 
 bool cr::keyboard::is_pressed(int key) const {
 	if (m_is_invalid_key(key)) {
-		SDL_Log("Invalid key.");
+		cr::logger::warn("Invalid key.");
 		return false;
 	}
 	return m_keys[key] && !m_prevKeys[key];
@@ -55,7 +56,7 @@ bool cr::keyboard::is_pressed(int key) const {
 
 bool cr::keyboard::is_released(int key) const {
 	if (m_is_invalid_key(key)) {
-		SDL_Log("Invalid key.");
+		cr::logger::warn("Invalid key.");
 		return false;
 	}
 	return !m_keys[key] && m_prevKeys[key];
@@ -63,7 +64,7 @@ bool cr::keyboard::is_released(int key) const {
 
 bool cr::keyboard::is_held(int key, uint64_t timeout) const {
 	if (m_is_invalid_key(key)) {
-		SDL_Log("Invalid key.");
+		cr::logger::warn("Invalid key.");
 		return false;
 	}
 	if (!m_keys[key])

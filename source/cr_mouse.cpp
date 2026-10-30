@@ -2,11 +2,12 @@
  * See LICENSE.md for full terms. */
 
 #include "cr_mouse.h"
+#include "cr_logger.h"
 
 void cr::mouse::window_callback(const SDL_Event& event, void* data) {
 	auto* mouse = static_cast<cr::mouse*>(data);
 	if (!mouse) {
-		SDL_Log("Null mouse.");
+		cr::logger::fail("Null mouse.");
 		return;
 	}
 	switch (event.type) {
@@ -31,7 +32,7 @@ void cr::mouse::update(uint64_t ticks) {
 
 bool cr::mouse::is_down(int button) const {
 	if (m_is_invalid_button(button)) {
-		SDL_Log("Invalid button.");
+		cr::logger::warn("Invalid button.");
 		return false;
 	}
 	return m_buttons[button];
@@ -39,7 +40,7 @@ bool cr::mouse::is_down(int button) const {
 
 bool cr::mouse::is_up(int button) const {
 	if (m_is_invalid_button(button)) {
-		SDL_Log("Invalid button.");
+		cr::logger::warn("Invalid button.");
 		return false;
 	}
 	return !m_buttons[button];
@@ -47,7 +48,7 @@ bool cr::mouse::is_up(int button) const {
 
 bool cr::mouse::is_pressed(int button) const {
 	if (m_is_invalid_button(button)) {
-		SDL_Log("Invalid button.");
+		cr::logger::warn("Invalid button.");
 		return false;
 	}
 	return m_buttons[button] && !m_prevButtons[button];
@@ -55,7 +56,7 @@ bool cr::mouse::is_pressed(int button) const {
 
 bool cr::mouse::is_released(int button) const {
 	if (m_is_invalid_button(button)) {
-		SDL_Log("Invalid button.");
+		cr::logger::warn("Invalid button.");
 		return false;
 	}
 	return !m_buttons[button] && m_prevButtons[button];
@@ -63,7 +64,7 @@ bool cr::mouse::is_released(int button) const {
 
 bool cr::mouse::is_held(int button, uint64_t timeout) const {
 	if (m_is_invalid_button(button)) {
-		SDL_Log("Invalid button.");
+		cr::logger::warn("Invalid button.");
 		return false;
 	}
 	if (!m_buttons[button])

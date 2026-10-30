@@ -19,7 +19,7 @@ void cr::clock::tick(cr::window* window) {
 		m_accumulatedFps = 0;
 		m_fpsTicks %= m_FPS_TICKS;
 		if (window) {
-			char buffer[32];
+			static char buffer[22];
 			SDL_snprintf(buffer, sizeof(buffer), "crossyroad-clone | %d", m_fps);
 			window->set_title(buffer);
 		}

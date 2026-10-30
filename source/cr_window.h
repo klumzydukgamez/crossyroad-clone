@@ -29,18 +29,18 @@ public:
 	void poll_events();
 	void fire_event(const SDL_Event& event);
 
-	int push_callback(const cr::window_callback& callback);
+	bool push_callback(const cr::window_callback& callback, int* index = nullptr);
 	void pop_callback(int index);
 
 	void set_title(const char* title);
 
 private:
-	static constexpr int m_CALLBACK_COUNT = 16;
+	static constexpr int m_MAX_CALLBACKS = 16;
 
 	SDL_Window* m_handle = nullptr;
 	SDL_GLContext m_glContext = nullptr;
-	cr::window_callback m_callbacks[m_CALLBACK_COUNT] = {};
-	bool m_availableCallbacks[m_CALLBACK_COUNT] = {};
+	cr::window_callback m_callbacks[m_MAX_CALLBACKS] = {};
+	bool m_availableCallbacks[m_MAX_CALLBACKS] = {};
 };
 
 } /* namespace cr */
