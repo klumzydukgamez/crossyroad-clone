@@ -11,9 +11,11 @@ namespace cr {
 class clock {
 public:
 	void tick(cr::window* window = nullptr);
+	bool step();
 
 	uint64_t get_ticks() const;
 	uint32_t get_fps() const;
+	float get_dt() const;
 
 private:
 	static constexpr int m_FPS = 60;

@@ -8,6 +8,7 @@
 #include "cr_clock.h"
 #include "cr_keyboard.h"
 #include "cr_mouse.h"
+#include "cr_camera.h"
 
 namespace cr {
 
@@ -25,6 +26,7 @@ private:
 	cr::clock m_clock = {};
 	cr::keyboard m_keyboard = {};
 	cr::mouse m_mouse = {};
+	cr::camera m_camera = {};
 };
 
 } /* namespace cr */

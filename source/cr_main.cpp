@@ -28,6 +28,10 @@ void cr::main::run() {
 		m_keyboard.update(m_clock.get_ticks());
 		m_mouse.update(m_clock.get_ticks());
 
+		while (m_clock.step()) {
+			m_camera.simulate()
+		}
+
 		m_window.poll_events();
 
 		m_window.swap_buffers();

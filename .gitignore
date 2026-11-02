@@ -1,4 +1,5 @@
 third_party/SDL
+third_party/glm
 
 build
 build_out

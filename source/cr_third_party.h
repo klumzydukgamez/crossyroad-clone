@@ -6,5 +6,7 @@
 
 #include <SDL3/SDL.h>
 #include <glad/glad.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/quaternion.hpp>
 
 #endif /* CR_THIRD_PARTY_H */

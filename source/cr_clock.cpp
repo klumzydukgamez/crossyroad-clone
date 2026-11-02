@@ -26,10 +26,23 @@ void cr::clock::tick(cr::window* window) {
 	}
 }
 
+bool cr::clock::step() {
+	bool should_step = m_accumulatedTicks >= m_FRAME_TICKS;
+	if (should_step) {
+		m_accumulatedTicks -= m_FRAME_TICKS;
+		m_ticks++;
+	}
+	return should_step;
+}
+
 uint64_t cr::clock::get_ticks() const {
 	return m_ticks;
 }
 
 uint32_t cr::clock::get_fps() const {
 	return m_fps;
+}
+
+float cr::clock::get_dt() const {
+	return 1.0f;
 }

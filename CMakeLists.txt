@@ -28,6 +28,7 @@ set(SDL_SHARED OFF CACHE BOOL "" FORCE)
 
 add_subdirectory("${CR_THIRD_PARTY_DIR}/SDL" EXCLUDE_FROM_ALL SYSTEM)
 add_subdirectory("${CR_THIRD_PARTY_DIR}/glad" EXCLUDE_FROM_ALL SYSTEM)
+add_subdirectory("${CR_THIRD_PARTY_DIR}/glm" EXCLUDE_FROM_ALL SYSTEM)
 
 add_executable(cr)
 set_target_properties(
@@ -50,6 +51,7 @@ target_link_libraries(
 	cr PRIVATE
 	SDL3::SDL3
 	glad
+	glm::glm
 )
 target_compile_options(
 	cr PRIVATE
