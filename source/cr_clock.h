@@ -11,6 +11,7 @@ namespace cr {
 class clock {
 public:
 	void tick();
+	bool step();
 
 	float get_delta_step_time();
 	float get_delta_frame_time();

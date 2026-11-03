@@ -11,10 +11,14 @@ void cr::clock::tick() {
 		elapsed = m_MAX_ELAPSED_TICKS;
 	m_accumulatedTicks += elapsed;
 	m_lastTicks = current;
+}
 
-	while (m_accumulatedTicks >= m_STEP_TICKS) {
+bool cr::clock::step() {
+	if (m_accumulatedTicks >= m_STEP_TICKS) {
 		m_accumulatedTicks -= m_STEP_TICKS;
+		return true;
 	}
+	return false;
 }
 
 float cr::clock::get_delta_step_time() {
@@ -22,5 +26,5 @@ float cr::clock::get_delta_step_time() {
 }
 
 float cr::clock::get_delta_frame_time() {
-	return static_cast<float>(static_cast<double>(m_accumulatedTicks) / m_STEP_TICKS);
+	return static_cast<float>(static_cast<double>(m_accumulatedTicks) / static_cast<double>(m_STEP_TICKS));
 }

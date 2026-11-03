@@ -28,6 +28,13 @@ void cr::main::run() {
 
 		m_clock.tick();
 
+		while (m_clock.step()) {
+			m_camera.update(m_clock.get_delta_step_time());
+			m_camera.set_target_position({100.0f, 0.0f, 100.0f});
+		}
+
+		m_camera.calculate_matrices(m_clock.get_delta_frame_time());
+
 		m_window.swap_buffers();
 	}
 }

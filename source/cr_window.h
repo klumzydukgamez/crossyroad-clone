@@ -15,8 +15,8 @@ struct window_callback {
 
 class window {
 public:
-	static constexpr int WIDTH = 360;
-	static constexpr int HEIGHT = 640;
+	static constexpr int WIDTH = 540; /* 9 * n */
+	static constexpr int HEIGHT = 960; /* 16 * n */
 	static constexpr float RATIO = static_cast<float>(WIDTH) / static_cast<float>(HEIGHT);
 
 	bool init();

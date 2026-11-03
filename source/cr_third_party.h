@@ -8,5 +8,6 @@
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/quaternion.hpp>
+#include <glm/gtc/matrix_transform.hpp>
 
 #endif /* CR_THIRD_PARTY_H */

@@ -40,6 +40,11 @@ bool cr::window::init() {
 	SDL_GL_MakeCurrent(m_window, m_glContext);
 	SDL_GL_SetSwapInterval(0);
 
+	if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(SDL_GL_GetProcAddress))) {
+		cr::logger::fail("Failed to load GL.");
+		return false;
+	}
+
 	return true;
 }
 
