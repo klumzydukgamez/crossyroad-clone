@@ -8,6 +8,7 @@ namespace cr {
 
 class crash_reporter {
 public:
+	/* only works on Windows */
 	static void init();
 };
 
