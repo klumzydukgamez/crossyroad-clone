@@ -7,7 +7,7 @@ void cr::logger::inform(const char* msg) {
 	m_update_time();
 	SDL_snprintf(
 		m_temp, m_LOG_SIZE,
-		"[%02d:%02d:%02d] [INFO] %s",
+		"[%02d:%02d:%02d] \033[32m[INFO] %s\033[0m",
 		m_dateTime.hour, m_dateTime.minute, m_dateTime.second,
 		msg
 	);
@@ -18,7 +18,7 @@ void cr::logger::warn(const char* msg) {
 	m_update_time();
 	SDL_snprintf(
 		m_temp, m_LOG_SIZE,
-		"[%02d:%02d:%02d] [WARNING] %s",
+		"[%02d:%02d:%02d] \033[33m[WARNING] %s\033[0m",
 		m_dateTime.hour, m_dateTime.minute, m_dateTime.second,
 		msg
 	);
@@ -29,7 +29,18 @@ void cr::logger::fail(const char* msg) {
 	m_update_time();
 	SDL_snprintf(
 		m_temp, m_LOG_SIZE,
-		"[%02d:%02d:%02d] [FAILURE] %s",
+		"[%02d:%02d:%02d] \033[31m[FAILURE] %s\033[0m",
+		m_dateTime.hour, m_dateTime.minute, m_dateTime.second,
+		msg
+	);
+	SDL_Log("%s", m_temp);
+}
+
+void cr::logger::trace(const char* msg) {
+	m_update_time();
+	SDL_snprintf(
+		m_temp, m_LOG_SIZE,
+		"[%02d:%02d:%02d] \033[35m[TRACE] %s\033[0m",
 		m_dateTime.hour, m_dateTime.minute, m_dateTime.second,
 		msg
 	);
@@ -37,14 +48,7 @@ void cr::logger::fail(const char* msg) {
 }
 
 void cr::logger::trace_sdl() {
-	m_update_time();
-	SDL_snprintf(
-		m_temp, m_LOG_SIZE,
-		"[%02d:%02d:%02d] [TRACE][SDL] %s",
-		m_dateTime.hour, m_dateTime.minute, m_dateTime.second,
-		SDL_GetError()
-	);
-	SDL_Log("%s", m_temp);
+	trace(SDL_GetError());
 }
 
 void cr::logger::m_update_time() {

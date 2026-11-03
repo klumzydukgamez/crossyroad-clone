@@ -13,6 +13,8 @@ public:
 	static void inform(const char* msg);
 	static void warn(const char* msg);
 	static void fail(const char* msg);
+	static void trace(const char* msg);
+
 	static void trace_sdl();
 
 private:
