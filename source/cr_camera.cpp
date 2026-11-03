@@ -36,3 +36,15 @@ void cr::camera::calculate_matrices(float dft) {
 void cr::camera::set_target_position(const glm::vec3& position) {
 	m_targetPosition = position;
 }
+
+const glm::mat4& cr::camera::get_view() const {
+	return m_view;
+}
+
+const glm::mat4& cr::camera::get_projection() const {
+	return m_projection;
+}
+
+const glm::mat4& cr::camera::get_projection_view() const {
+	return m_projectionView;
+}

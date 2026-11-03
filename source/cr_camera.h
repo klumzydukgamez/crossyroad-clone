@@ -15,6 +15,10 @@ public:
 
 	void set_target_position(const glm::vec3& position);
 
+	const glm::mat4& get_view() const;
+	const glm::mat4& get_projection() const;
+	const glm::mat4& get_projection_view() const;
+
 private:
 	static constexpr float m_PITCH = glm::radians(-45.0f);
 	static constexpr float m_YAW = glm::radians(45.0f);

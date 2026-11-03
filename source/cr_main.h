@@ -6,6 +6,7 @@
 
 #include "cr_window.h"
 #include "cr_clock.h"
+#include "cr_input.h"
 #include "cr_camera.h"
 
 namespace cr {
@@ -24,6 +25,7 @@ private:
 
 	cr::window m_window = {};
 	cr::clock m_clock = {};
+	cr::input m_input = {};
 	cr::camera m_camera = {};
 };
 
