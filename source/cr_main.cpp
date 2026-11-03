@@ -25,6 +25,9 @@ void cr::main::cleanup() {
 void cr::main::run() {
 	while (m_running) {
 		m_window.poll_events();
+
+		m_clock.tick();
+
 		m_window.swap_buffers();
 	}
 }

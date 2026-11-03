@@ -38,6 +38,7 @@ bool cr::window::init() {
 		return false;
 	}
 	SDL_GL_MakeCurrent(m_window, m_glContext);
+	SDL_GL_SetSwapInterval(0);
 
 	return true;
 }

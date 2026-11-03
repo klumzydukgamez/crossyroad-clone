@@ -5,6 +5,7 @@
 #define CR_MAIN_H
 
 #include "cr_window.h"
+#include "cr_clock.h"
 
 namespace cr {
 
@@ -19,7 +20,9 @@ private:
 	static void m_quit_callback(const SDL_Event& event, void* data);
 
 	bool m_running = true;
+
 	cr::window m_window = {};
+	cr::clock m_clock = {};
 };
 
 } /* namespace cr */
