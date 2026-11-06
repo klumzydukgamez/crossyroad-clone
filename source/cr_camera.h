@@ -20,7 +20,7 @@ public:
 	const glm::mat4& get_projection_view() const;
 
 private:
-	static constexpr float m_PITCH = glm::radians(-45.0f);
+	static constexpr float m_PITCH = glm::radians(-35.264f);
 	static constexpr float m_YAW = glm::radians(45.0f);
 	static constexpr float m_ACCELERATION = 2.0f;
 	static constexpr float m_FRICTION = 0.5f;

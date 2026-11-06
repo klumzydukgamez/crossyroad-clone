@@ -23,6 +23,10 @@ bool cr::window::init() {
 		cr::logger::warn("Failed to set SDL GL profile mask attribute.");
 		cr::logger::trace_sdl();
 	}
+	if (!SDL_GL_SetAttribute(SDL_GL_CONTEXT_FLAGS, SDL_GL_CONTEXT_DEBUG_FLAG)) {
+		cr::logger::warn("Failed to set SDL GL flags attribute.");
+		cr::logger::trace_sdl();
+	}
 
 	m_window = SDL_CreateWindow("crossyroad-clone", WIDTH, HEIGHT, SDL_WINDOW_OPENGL);
 	if (!m_window) {

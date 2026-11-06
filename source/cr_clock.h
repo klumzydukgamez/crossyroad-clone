@@ -13,8 +13,10 @@ public:
 	void tick();
 	bool step();
 
-	float get_delta_step_time();
-	float get_delta_frame_time();
+	float get_delta_step_time() const;
+	float get_delta_frame_time() const;
+
+	Uint64 get_ticks() const;
 
 private:
 	static constexpr int m_FPS = 60;

@@ -16,15 +16,20 @@ void cr::clock::tick() {
 bool cr::clock::step() {
 	if (m_accumulatedTicks >= m_STEP_TICKS) {
 		m_accumulatedTicks -= m_STEP_TICKS;
+		m_ticks++;
 		return true;
 	}
 	return false;
 }
 
-float cr::clock::get_delta_step_time() {
+float cr::clock::get_delta_step_time() const {
 	return 1.0f / m_FPS;
 }
 
-float cr::clock::get_delta_frame_time() {
+float cr::clock::get_delta_frame_time() const {
 	return static_cast<float>(static_cast<double>(m_accumulatedTicks) / static_cast<double>(m_STEP_TICKS));
+}
+
+Uint64 cr::clock::get_ticks() const {
+	return m_ticks;
 }

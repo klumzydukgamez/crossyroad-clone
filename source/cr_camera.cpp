@@ -21,8 +21,8 @@ void cr::camera::update(float dst) {
 void cr::camera::calculate_matrices(float dft) {
 	m_projection = glm::ortho(
 		0.0f, static_cast<float>(cr::window::WIDTH),
-		static_cast<float>(cr::window::HEIGHT), 0.0f,
-		0.001f, 10000.0f
+		0.0f, static_cast<float>(cr::window::HEIGHT),
+		-1000.0f, 1000.0f
 	);
 	glm::vec3 position = glm::mix(m_prevPosition, m_position, dft);
 	glm::vec3 front;

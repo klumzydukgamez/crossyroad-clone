@@ -8,6 +8,7 @@
 #include "cr_clock.h"
 #include "cr_input.h"
 #include "cr_camera.h"
+#include "cr_shader.h"
 
 namespace cr {
 
@@ -27,6 +28,9 @@ private:
 	cr::clock m_clock = {};
 	cr::input m_input = {};
 	cr::camera m_camera = {};
+	cr::shader m_shader = {};
+
+	GLuint m_vao = 0;
 };
 
 } /* namespace cr */

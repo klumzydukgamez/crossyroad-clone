@@ -3,4 +3,7 @@ CompileFlags:
 
 Diagnostics:
   UnusedIncludes: None
+  Suppress:
+    - "-Wc23-extensions"
+    - "-Wpedantic"
 
